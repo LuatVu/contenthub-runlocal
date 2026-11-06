@@ -1,0 +1,24 @@
+-- Khai báo kênh đăng cho luồng NBA. Copy thành channels.sql, điền id thật rồi chạy:
+--   docker compose exec -T postgres psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" < db/seed/channels.sql
+--
+-- credential_key là TÊN biến môi trường trong .env (không phải token):
+--   nba-yt -> YOUTUBE_REFRESH_TOKEN_NBA   (+ YOUTUBE_CLIENT_ID / YOUTUBE_CLIENT_SECRET dùng chung)
+--   nba-fb -> FACEBOOK_TOKEN_SOURCE_ACCESS_TOKEN (token System User)
+
+INSERT INTO content.channels
+  (code, topic, platform, external_id, handle, credential_key, formats, platform_settings, content_profile)
+VALUES
+  ('nba-yt', 'nba', 'youtube', '<UC...>', 'NBA Game Turn On',
+   'YOUTUBE_REFRESH_TOKEN_NBA', '{reel}',
+   '{"default_language": "en", "category_id": "17", "default_tags": ["NBA", "NBA highlights", "basketball"]}',
+   '{}'),
+  ('nba-fb', 'nba', 'facebook', '<page_id>', 'NBA Game Turn On',
+   'FACEBOOK_TOKEN_SOURCE_ACCESS_TOKEN', '{reel}',
+   '{"token_type": "system_user"}',
+   '{}')
+ON CONFLICT (code) DO NOTHING;
+
+-- Ghi đè tham số workflow cho riêng một kênh (ví dụ):
+-- UPDATE content.channels
+--    SET content_profile = '{"max_clips": 6, "youtube_max_clips": 4}'::jsonb
+--  WHERE code = 'nba-yt';

@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "ContentHub (local)",
+      "Group": "ContentHub",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "contenthub",
+      "Username": "contenthub",
+      "SSLMode": "prefer",
+      "Comment": "Postgres + pgvector cua docker compose. Mat khau = POSTGRES_PASSWORD trong .env"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# Secret
+.env
+db/seed/channels.sql
+
+# Media sinh ra khi chạy (video, giọng đọc, nhạc, spec render)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/

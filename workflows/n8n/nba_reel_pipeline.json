@@ -1,0 +1,1649 @@
+{
+  "id": "nbaReelPipeline1",
+  "name": "[nba][nba-yt+fb] Daily Highlights",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "93aeffd5-99d0-5872-9202-f2b87de70be8",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "nba_url",
+              "value": "http://nba-content:8000/",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "publish_url",
+              "value": "http://publish-media:8000/",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "channel_codes",
+              "value": "={{ ['nba-yt', 'nba-fb'] }}",
+              "type": "array"
+            },
+            {
+              "id": "4",
+              "name": "publish",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "5",
+              "name": "storyteller_collection",
+              "value": "opening-week-fire-moments-latest",
+              "type": "string"
+            },
+            {
+              "id": "6",
+              "name": "storyteller_client_version",
+              "value": "10.13.15",
+              "type": "string"
+            },
+            {
+              "id": "8",
+              "name": "max_clips",
+              "value": 10,
+              "type": "number"
+            },
+            {
+              "id": "9",
+              "name": "min_duration",
+              "value": 6,
+              "type": "number"
+            },
+            {
+              "id": "10",
+              "name": "max_duration",
+              "value": 24,
+              "type": "number"
+            },
+            {
+              "id": "11",
+              "name": "lookback_hours",
+              "value": 72,
+              "type": "number"
+            },
+            {
+              "id": "12",
+              "name": "max_per_player",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "13",
+              "name": "llm_candidates",
+              "value": 30,
+              "type": "number"
+            },
+            {
+              "id": "14",
+              "name": "channel_name",
+              "value": "NBA Game Turn On",
+              "type": "string"
+            },
+            {
+              "id": "15",
+              "name": "brand_handle",
+              "value": "@nbagameturnon",
+              "type": "string"
+            },
+            {
+              "id": "16",
+              "name": "credit_text",
+              "value": "Clip: NBA",
+              "type": "string"
+            },
+            {
+              "id": "17",
+              "name": "cta_voice",
+              "value": "Follow for daily NBA highlights!",
+              "type": "string"
+            },
+            {
+              "id": "18",
+              "name": "cta_on_screen",
+              "value": "Follow for daily NBA highlights",
+              "type": "string"
+            },
+            {
+              "id": "19",
+              "name": "language",
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "id": "20",
+              "name": "voice_id",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "21",
+              "name": "model_id",
+              "value": "eleven_v4",
+              "type": "string"
+            },
+            {
+              "id": "22",
+              "name": "stability",
+              "value": 0.35,
+              "type": "number"
+            },
+            {
+              "id": "23",
+              "name": "style",
+              "value": 0.5,
+              "type": "number"
+            },
+            {
+              "id": "24",
+              "name": "speed",
+              "value": 1.08,
+              "type": "number"
+            },
+            {
+              "id": "25",
+              "name": "max_commentary_seconds",
+              "value": 8,
+              "type": "number"
+            },
+            {
+              "id": "26",
+              "name": "music_mode",
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "id": "27",
+              "name": "bgm_volume",
+              "value": 0.18,
+              "type": "number"
+            },
+            {
+              "id": "28",
+              "name": "clip_volume",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "29",
+              "name": "duck_volume",
+              "value": 0.3,
+              "type": "number"
+            },
+            {
+              "id": "30",
+              "name": "voice_volume",
+              "value": 1.15,
+              "type": "number"
+            },
+            {
+              "id": "31",
+              "name": "overlay_image_url",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "32",
+              "name": "caption_margin_v",
+              "value": 420,
+              "type": "number"
+            },
+            {
+              "id": "33",
+              "name": "slot_timezone",
+              "value": "America/New_York",
+              "type": "string"
+            },
+            {
+              "id": "34",
+              "name": "slots",
+              "value": "={{ ['19:30', '20:30', '18:30', '12:00', '17:30', '21:30', '16:00', '14:00', '09:30', '07:30'] }}",
+              "type": "array"
+            },
+            {
+              "id": "35",
+              "name": "min_lead_minutes",
+              "value": 30,
+              "type": "number"
+            },
+            {
+              "id": "36",
+              "name": "youtube_max_clips",
+              "value": 6,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9bb385ed-3a8d-56f3-9faf-220650bfd32c",
+      "name": "Set Parameters",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Validates the channels and binds them (format 'reel') to this workflow on first run.\n-- Fails if another workflow already owns one of them: one workflow per channel and format.\nSELECT content.bind_channels($1::text[], 'reel', $2::text, $3::text) AS cfg;",
+        "options": {
+          "queryReplacement": "={{ [ $json.channel_codes, $workflow.id, $workflow.name ] }}"
+        }
+      },
+      "id": "a5996664-83d6-570f-aaee-36d2366eb448",
+      "name": "Bind Channels",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Effective run config: Set Parameters overridden by the channels' content_profile.\n// Endpoints, channel_codes and publish stay workflow-level.\nconst base = $('Set Parameters').first().json;\nconst cfg = $input.first().json.cfg;\nconst profile = cfg.profile || {};\nconst LOCKED = new Set(['channel_codes', 'publish', 'nba_url', 'publish_url']);\nconst out = { ...base };\nfor (const [k, v] of Object.entries(profile)) if (!LOCKED.has(k)) out[k] = v;\nout.topic = cfg.topic;\nout.channels = cfg.channels;\n// Same pairs as SUPPORTED in services/publish-media/app/main.py.\nconst bad = cfg.channels.filter((c) => !['facebook', 'youtube'].includes(c.platform));\nif (bad.length) {\n  throw new Error(`publishing reel to ${bad.map((c) => `${c.code} (${c.platform})`).join(', ')} is not implemented yet`);\n}\nreturn [{ json: out }];\n"
+      },
+      "id": "8aaeb044-5529-5326-8bfd-768491002f20",
+      "name": "Resolve Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        750,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'fetch_clips', collection: $('Resolve Config').first().json.storyteller_collection, client_version: $('Resolve Config').first().json.storyteller_client_version }) }}",
+        "options": {
+          "timeout": 90000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "d707b0f4-ae4d-528d-9f7b-f76def617f8a",
+      "name": "Fetch Clips",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.used_clip_ids() AS ids;",
+        "options": {}
+      },
+      "id": "5961b503-bbd4-552c-9ade-a3664df63b7d",
+      "name": "Load Used Clip IDs",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1250,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'select', clips: $('Fetch Clips').first().json.clips, exclude_ids: $json.ids || [], params: { max_clips: $('Resolve Config').first().json.max_clips, min_duration: $('Resolve Config').first().json.min_duration, max_duration: $('Resolve Config').first().json.max_duration, lookback_hours: $('Resolve Config').first().json.lookback_hours, max_per_player: $('Resolve Config').first().json.max_per_player, llm_candidates: $('Resolve Config').first().json.llm_candidates } }) }}",
+        "options": {
+          "timeout": 300000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "20a89cb7-f5db-5c1e-85b9-888316deeda3",
+      "name": "Select Clips",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a2200b47-140d-5c56-8316-c91d58027422",
+              "leftValue": "={{ ($json.count || 0) > 0 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "345a8638-42de-5170-9266-7ec71734df70",
+      "name": "Has Selection?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1750,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ea6e730b-a4eb-51b3-a759-169e0b79603f",
+      "name": "Nothing To Publish",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.save_selection($1::date, $2::jsonb) AS result;",
+        "options": {
+          "queryReplacement": "={{ [ $now.toISODate(), JSON.stringify($json.selected) ] }}"
+        }
+      },
+      "id": "b8621f82-3067-5b4f-80b6-d7eff098a7bc",
+      "name": "Save Selection",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2000,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// One item per reel this run owns, each with a publish slot in US prime time.\n// `slots` lists HH:mm in slot_timezone, best slot first; rank 1 gets the first slot.\nconst p = $('Resolve Config').first().json;\nconst owned = ($input.first().json.result || []).slice().sort((a, b) => a.rank - b.rank);\nconst byClip = Object.fromEntries(($('Select Clips').first().json.selected || []).map((s) => [s.clip_id, s]));\nconst tz = p.slot_timezone || 'America/New_York';\nconst slots = (p.slots || []).map(String);\nif (!slots.length) throw new Error('slots must not be empty');\nconst earliest = DateTime.now().plus({ minutes: Number(p.min_lead_minutes || 30) });\nconst today = DateTime.now().setZone(tz).startOf('day');\nconst taken = new Set();\nreturn owned.map((o, i) => {\n  const [h, m] = slots[i % slots.length].split(':').map(Number);\n  let when = today.plus({ days: Math.floor(i / slots.length) }).set({ hour: h, minute: m });\n  while (when < earliest || taken.has(when.toMillis())) when = when.plus({ days: 1 });\n  taken.add(when.toMillis());\n  return { json: {\n    reel_id: o.reel_id, clip_id: o.clip_id, rank: o.rank,\n    publish_at: when.toUTC().toISO(), publish_local: when.toFormat(\"yyyy-LL-dd HH:mm ZZZZ\"),\n    clip: byClip[o.clip_id],\n  } };\n});\n"
+      },
+      "id": "6c5be8f5-7b2f-511e-9849-91dded240a8b",
+      "name": "Plan Slots",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2250,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "f9e16913-11c8-5642-b141-a52e065d6b48",
+      "name": "Loop Over Clips",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'script', clip: { ...$('Loop Over Clips').item.json.clip }, channel_name: $('Resolve Config').first().json.channel_name, cta_voice: $('Resolve Config').first().json.cta_voice, cta_on_screen: $('Resolve Config').first().json.cta_on_screen, music_mode: $('Resolve Config').first().json.music_mode }) }}",
+        "options": {
+          "timeout": 180000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "04796f54-af1f-5c5c-990b-97aa75f63424",
+      "name": "Generate Script",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.set_reel($1::uuid, 'scripted', jsonb_build_object('script', $2::jsonb, 'publish_at', $3::text)) AS r;",
+        "options": {
+          "queryReplacement": "={{ [ $('Loop Over Clips').item.json.reel_id, JSON.stringify($json.script), $('Loop Over Clips').item.json.publish_at ] }}"
+        }
+      },
+      "id": "bb38cc50-5eca-54bf-ba68-ff8980a40763",
+      "name": "Save Script",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3050,
+        160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'voice', reel_id: $('Loop Over Clips').item.json.reel_id, script: $('Generate Script').item.json.script, voice_id: $('Resolve Config').first().json.voice_id, model_id: $('Resolve Config').first().json.model_id, stability: $('Resolve Config').first().json.stability, style: $('Resolve Config').first().json.style, speed: $('Resolve Config').first().json.speed, max_commentary_seconds: Math.min($('Resolve Config').first().json.max_commentary_seconds, 0.6 * $('Loop Over Clips').item.json.clip.duration) }) }}",
+        "options": {
+          "timeout": 300000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "414aa6ec-083a-5cb2-9e6d-dfff6ccbaa51",
+      "name": "Voice (ElevenLabs)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3300,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.set_reel($1::uuid, 'voiced', jsonb_build_object('voice', $2::jsonb)) AS r;",
+        "options": {
+          "queryReplacement": "={{ [ $('Loop Over Clips').item.json.reel_id, JSON.stringify({ segments: $json.segments }) ] }}"
+        }
+      },
+      "id": "81c85615-57aa-56ff-8416-be4dfcc3f609",
+      "name": "Save Voice",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3550,
+        160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "bbe6dd75-a805-5fc1-809d-ea4956704dea",
+              "leftValue": "={{ $('Generate Script').item.json.script.music.use === true && $('Resolve Config').first().json.music_mode !== 'off' }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "64f2b3cd-a46d-5918-8ff4-c79c05fe43e6",
+      "name": "Music?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3800,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'music', reel_id: $('Loop Over Clips').item.json.reel_id, prompt: $('Generate Script').item.json.script.music.prompt, duration_seconds: Math.ceil(Math.max(2.6, 0.5 + $('Voice (ElevenLabs)').item.json.segments.find((s) => s.id === 'hook').duration) + $('Loop Over Clips').item.json.clip.duration + Math.max(2.6, 0.85 + $('Voice (ElevenLabs)').item.json.segments.find((s) => s.id === 'cta').duration) + 1) }) }}",
+        "options": {
+          "timeout": 300000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "f811edea-2b5c-52e5-9102-4e890d1f2724",
+      "name": "Music (ElevenLabs)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4050,
+        60
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// A failed music request must not fail the clip: render without a music bed.\nreturn { json: { music_key: $json.music_key || null, music_error: $json.error ? String($json.error).slice(0, 300) : null } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "beeca232-9f9c-5b4b-8691-0db2a0095862",
+      "name": "Music Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4300,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return { json: { music_key: null, music_error: null } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "6e301e9a-0bcd-525f-a9f1-61329c1f2763",
+      "name": "No Music",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4050,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const loop = $('Loop Over Clips').item.json;\nconst p = $('Resolve Config').first().json;\nreturn { json: {\n  reel_id: loop.reel_id,\n  music_key: $json.music_key || null,\n  spec: {\n    clip_url: loop.clip.mp4_url,\n    thumbnail_url: loop.clip.thumbnail_url,\n    segments: $('Voice (ElevenLabs)').item.json.segments,\n    script: $('Generate Script').item.json.script,\n    music_key: $json.music_key || null,\n    params: {\n      overlay_image_url: p.overlay_image_url, brand_handle: p.brand_handle, credit_text: p.credit_text,\n      bgm_volume: p.bgm_volume, clip_volume: p.clip_volume, duck_volume: p.duck_volume,\n      voice_volume: p.voice_volume, caption_margin_v: p.caption_margin_v,\n    },\n  },\n} };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "57262cb8-bc14-59b9-aed7-d762f95afc81",
+      "name": "Build Render Spec",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4550,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'render_start', reel_id: $json.reel_id, spec: $json.spec }) }}",
+        "options": {
+          "timeout": 120000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "7c092ad4-3fb4-5d8b-bf5c-034234a57c54",
+      "name": "Start Render",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4800,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.set_reel($1::uuid, 'rendering', jsonb_build_object('music_key', $2::text)) AS r;",
+        "options": {
+          "queryReplacement": "={{ [ $('Loop Over Clips').item.json.reel_id, $('Build Render Spec').item.json.music_key ] }}"
+        }
+      },
+      "id": "17a4efa5-415b-5ed1-868f-7b6560e60579",
+      "name": "Mark Rendering",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        5050,
+        160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.nba_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mode: 'render_wait', reel_id: $('Loop Over Clips').item.json.reel_id, job_id: $('Start Render').item.json.job_id, max_seconds: 1800 }) }}",
+        "options": {
+          "timeout": 1860000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "2641f82a-d80b-5a7f-ba02-89844f4d7ab2",
+      "name": "Wait For Render",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5300,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "0131cd12-8e0e-50f9-ae29-5652c0dda158",
+              "leftValue": "={{ $json.status === 'video_ready' }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "43bbbc34-c3ed-5df3-a4e1-2d58d2a0f97a",
+      "name": "Video Ready?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        5550,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.set_reel($1::uuid, 'video_ready', jsonb_build_object('video_key', $2::text, 'duration', $3::numeric)) AS r;",
+        "options": {
+          "queryReplacement": "={{ [ $('Loop Over Clips').item.json.reel_id, $json.video_key, $json.duration ] }}"
+        }
+      },
+      "id": "a7b7672b-1324-5eb7-861d-8c045f8ade86",
+      "name": "Save Video",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        5800,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "40f63cac-bbeb-50e8-96ee-c8182826d883",
+              "leftValue": "={{ $('Resolve Config').first().json.publish === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "aef6d7d0-3c04-5a99-96b5-0b098dcf8ce9",
+      "name": "Publish?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        6050,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Dry run: nothing was uploaded, free the clip so a real run can use it.\nDELETE FROM content_nba.reels WHERE id = $1::uuid RETURNING id;",
+        "options": {
+          "queryReplacement": "={{ [ $('Loop Over Clips').item.json.reel_id ] }}"
+        }
+      },
+      "id": "1969ce24-40d2-5898-939c-7754e83b5639",
+      "name": "Release (dry run)",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        6300,
+        240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// One entry per channel. YouTube is capped to the best `youtube_max_clips` clips per run\n// (Data API quota: an upload costs 1,600 of the default 10,000 daily units).\nconst p = $('Resolve Config').first().json;\nconst loop = $('Loop Over Clips').item.json;\nconst script = $('Generate Script').item.json.script;\nconst videoKey = $('Wait For Render').item.json.video_key;\nconst plans = p.channels.map((channel) => {\n  if (channel.platform === 'youtube' && loop.rank > Number(p.youtube_max_clips || 6)) {\n    return { channel: channel.code, reel_id: loop.reel_id, skip: true, reason: `YouTube cap: rank ${loop.rank} > ${p.youtube_max_clips}` };\n  }\n  return { channel: channel.code, reel_id: loop.reel_id, skip: false, body: {\n    mode: 'publish', format: 'reel', channel, video_key: videoKey, title: script.title,\n    description: script.description, tags: script.tags, publish_at: loop.publish_at, language: p.language || 'en',\n  } };\n});\nreturn { json: { plans } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "5a445d9a-afd1-5869-9e8f-b47579483a36",
+      "name": "Plan Publishing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6300,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "plans",
+        "options": {}
+      },
+      "id": "48da05d5-3252-56d8-aa16-d5f05deba989",
+      "name": "Split Plans",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        6550,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "30f0dc2a-9c71-5c92-bbc0-d852343c703d",
+              "leftValue": "={{ $json.skip === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5c274cd0-c216-55ee-94e8-48de0ca883e1",
+      "name": "Skip?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        6800,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return { json: { reel_id: $json.reel_id, channel: $json.channel, status: 'skipped', error: $json.reason } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "d3fc4b64-351a-5223-8152-e92a4a58824a",
+      "name": "Tag Skipped",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7050,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Resolve Config').first().json.publish_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 900000,
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 0
+            }
+          }
+        }
+      },
+      "id": "d5088517-ae5d-5013-9170-b6255ba4d11e",
+      "name": "Publish (publish-media)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7050,
+        180
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Service API Key"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pairs the publish response with its plan entry (reel + channel).\nconst plan = $('Split Plans').item.json;\nconst j = $json || {};\nconst base = { reel_id: plan.reel_id, channel: plan.channel };\nif ((j.status === 'scheduled' || j.status === 'published') && j.post_id) {\n  return { json: { ...base, status: j.status, post_id: String(j.post_id), url: j.url || null, scheduled_for: j.scheduled_for || null } };\n}\nlet error = j.error;\nif (error && typeof error !== 'string') error = [error.message, error.description].filter(Boolean).join(' - ');\nconst inner = String(error || '').replace(/\\\\\"/g, '\"').match(/\"error\":\\s*\"((?:[^\"\\\\]|\\\\.)*)\"/);\nif (inner) error = inner[1];\nreturn { json: { ...base, status: 'failed', error: String(error || 'publish failed').slice(0, 2000) } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "ea58578d-791d-59fb-90f5-2e69e16cbca8",
+      "name": "Tag Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7300,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map((i) => i.json);\nreturn [{ json: { reel_id: items[0].reel_id, results_json: JSON.stringify(items.map(({ reel_id, ...r }) => r)) } }];\n"
+      },
+      "id": "5e2622a6-964a-5902-baaa-40b6f06b82a7",
+      "name": "Collect Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7550,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.finish_reel($1::uuid, $2::jsonb) AS result;",
+        "options": {
+          "queryReplacement": "={{ [ $json.reel_id, $json.results_json ] }}"
+        }
+      },
+      "id": "88a799ae-1e58-5065-88eb-634459503557",
+      "name": "Finish Reel",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        7800,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Reached from the error output of a step (or a render that failed / ran out of time).\n// Only this clip is marked failed; the loop goes on with the next one.\nconst j = $json;\nconst e = j.error;\nlet reason;\nif (typeof e === 'string') reason = e;\nelse if (e && (e.message || e.description)) reason = [e.message, e.description].filter(Boolean).join(' - ');\nelse if (j.status === 'rendering') reason = 'render did not finish in time';\nelse reason = JSON.stringify(j).slice(0, 1000);\n// HTTP errors look like: 500 - \"{\\\"error\\\": \\\"script failed: ...\\\"}\" -> keep the inner message.\nconst inner = String(reason).replace(/\\\\\"/g, '\"').match(/\"error\":\\s*\"((?:[^\"\\\\]|\\\\.)*)\"/);\nif (inner) reason = inner[1];\nreturn { json: { reel_id: $('Loop Over Clips').item.json.reel_id, reason: String(reason).slice(0, 4000) } };\n",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "59d15a1c-63f3-501c-a8ae-ef2ece73ba87",
+      "name": "Prepare Failure",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5800,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT content_nba.set_reel($1::uuid, 'failed', jsonb_build_object('error', $2::text)) AS r;",
+        "options": {
+          "queryReplacement": "={{ [ $json.reel_id, $json.reason ] }}"
+        }
+      },
+      "id": "b4068f11-8196-5531-a745-56c3e172e1b8",
+      "name": "Mark Failed",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        6050,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT(*) FILTER (WHERE status IN ('scheduled','published'))::int AS ok,\n       COUNT(*) FILTER (WHERE status = 'failed' OR error_message IS NOT NULL)::int AS problems,\n       COALESCE(string_agg(clip_id || ': ' || error_message, E'\\n') FILTER (WHERE error_message IS NOT NULL), '') AS errors\nFROM content_nba.reels WHERE id = ANY($1::uuid[]);",
+        "options": {
+          "queryReplacement": "={{ [ $('Plan Slots').all().map((i) => i.json.reel_id) ] }}"
+        }
+      },
+      "id": "a7047709-8ffa-5d4d-9520-eba19d5cd6f7",
+      "name": "Summary",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2800,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REPLACE_ME",
+          "name": "ContentHub Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1803ca60-8d4d-5411-8167-800881987eec",
+              "leftValue": "={{ $json.problems > 0 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7269f79f-1d0c-5c8b-bde0-ef51dd2744cb",
+      "name": "Any Problems?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3050,
+        560
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "dbc4ac59-0ba3-553d-a0d3-8fab2910bcc7",
+      "name": "Done",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3300,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ $json.problems + ' clip(s) had problems (' + $json.ok + ' scheduled): ' + $json.errors }}"
+      },
+      "id": "f50cdc41-82d5-59c5-a7df-40f53f542b96",
+      "name": "Run Had Failures",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        3300,
+        480
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Parameters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Parameters": {
+      "main": [
+        [
+          {
+            "node": "Bind Channels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bind Channels": {
+      "main": [
+        [
+          {
+            "node": "Resolve Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve Config": {
+      "main": [
+        [
+          {
+            "node": "Fetch Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Clips": {
+      "main": [
+        [
+          {
+            "node": "Load Used Clip IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Used Clip IDs": {
+      "main": [
+        [
+          {
+            "node": "Select Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Clips": {
+      "main": [
+        [
+          {
+            "node": "Has Selection?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Selection?": {
+      "main": [
+        [
+          {
+            "node": "Save Selection",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nothing To Publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Selection": {
+      "main": [
+        [
+          {
+            "node": "Plan Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan Slots": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Clips": {
+      "main": [
+        [
+          {
+            "node": "Summary",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Script": {
+      "main": [
+        [
+          {
+            "node": "Save Script",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Script": {
+      "main": [
+        [
+          {
+            "node": "Voice (ElevenLabs)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Voice (ElevenLabs)": {
+      "main": [
+        [
+          {
+            "node": "Save Voice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Voice": {
+      "main": [
+        [
+          {
+            "node": "Music?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music?": {
+      "main": [
+        [
+          {
+            "node": "Music (ElevenLabs)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Music",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music (ElevenLabs)": {
+      "main": [
+        [
+          {
+            "node": "Music Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music Result": {
+      "main": [
+        [
+          {
+            "node": "Build Render Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Music": {
+      "main": [
+        [
+          {
+            "node": "Build Render Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Render Spec": {
+      "main": [
+        [
+          {
+            "node": "Start Render",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Render": {
+      "main": [
+        [
+          {
+            "node": "Mark Rendering",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Rendering": {
+      "main": [
+        [
+          {
+            "node": "Wait For Render",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait For Render": {
+      "main": [
+        [
+          {
+            "node": "Video Ready?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Ready?": {
+      "main": [
+        [
+          {
+            "node": "Save Video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Video": {
+      "main": [
+        [
+          {
+            "node": "Publish?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish?": {
+      "main": [
+        [
+          {
+            "node": "Plan Publishing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Release (dry run)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Release (dry run)": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan Publishing": {
+      "main": [
+        [
+          {
+            "node": "Split Plans",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Plans": {
+      "main": [
+        [
+          {
+            "node": "Skip?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip?": {
+      "main": [
+        [
+          {
+            "node": "Tag Skipped",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Publish (publish-media)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Skipped": {
+      "main": [
+        [
+          {
+            "node": "Collect Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Result": {
+      "main": [
+        [
+          {
+            "node": "Collect Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Results": {
+      "main": [
+        [
+          {
+            "node": "Finish Reel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finish Reel": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Failure": {
+      "main": [
+        [
+          {
+            "node": "Mark Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Failed": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Clips",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary": {
+      "main": [
+        [
+          {
+            "node": "Any Problems?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Any Problems?": {
+      "main": [
+        [
+          {
+            "node": "Run Had Failures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Done",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish (publish-media)": {
+      "main": [
+        [
+          {
+            "node": "Tag Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "executionTimeout": 28800,
+    "saveManualExecutions": true
+  },
+  "tags": []
+}
